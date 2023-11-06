@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cafes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>All Cafes</h1>
+    <div id="cafe-list" class="card-container">
+        {% for cafe in cafes %}
+        <div class="card">
+            <img src="{{ cafe.img_url }}" alt="{{ cafe.name }}" class="card-image">
+            <div class="card-body">
+                <h2 class="card-title">{{ cafe.name }}</h2>
+                <p class="card-text">Location: {{ cafe.location }}</p>
+                <p class="card-text">Seats: {{ cafe.seats }}</p>
+                <p class="card-text">Has Toilet: {{ 'Yes' if cafe.has_toilet else 'No' }}</p>
+                <p class="card-text">Has WiFi: {{ 'Yes' if cafe.has_wifi else 'No' }}</p>
+                <p class="card-text">Has Sockets: {{ 'Yes' if cafe.has_sockets else 'No' }}</p>
+                <p class="card-text">Can Take Calls: {{ 'Yes' if cafe.can_take_calls else 'No' }}</p>
+                <p class="card-text">Coffee Price: {{ cafe.coffee_price }}</p>
+                <div class="card-actions">
+                    <form action="{{ url_for('update_cafe_price', cafe_id=cafe.id) }}" method="post">
+                    <label for="price-{{ cafe.id }}">Update Price:</label>
+                    <input type="text" id="price-{{ cafe.id }}" name="new_price" required>
+                    <button type="submit">Submit</button>
+                </form>
+                    <form action="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this cafe?');">
+                    <input type="hidden" name="api_key" value="your_very_secret_key"> <!-- Replace with your method of securing the API Key -->
+                    <button type="submit" class="card-link">Delete Cafe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>No cafes found.</p>
+        {% endfor %}
+    </div>
+        <a href="{{ url_for('home') }}" class="button">Back to home</a>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Cafe</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}
+    Add a New Cafe
+    {% endblock %}
+
+    {% block content %}
+    <h1>Add a New Cafe</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Cafe Name" required>
+        <input type="text" name="map_url" placeholder="Map URL" required>
+        <input type="text" name="img_url" placeholder="Image URL" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="text" name="seats" placeholder="Number of Seats" required>
+        <label for="has_toilet">Has Toilet:</label>
+        <input type="checkbox" name="has_toilet" value="true">
+        <label for="has_wifi">Has WiFi:</label>
+        <input type="checkbox" name="has_wifi" value="true">
+        <label for="has_sockets">Has Sockets:</label>
+        <input type="checkbox" name="has_sockets" value="true">
+        <label for="can_take_calls">Can Take Calls:</label>
+        <input type="checkbox" name="can_take_calls" value="true">
+        <input type="text" name="coffee_price" placeholder="Coffee Price">
+        <button type="submit">Add Cafe</button>
+    </form>
+    <a href="{{ url_for('home') }}" class="button">Back to home</a>
+    {% endblock %}
+
+</body>
+</html>

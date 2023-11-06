@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Cafe App</title>
+</head>
+<body id="homepage-body">
+    {% extends "base.html" %}
+    {% block title %}
+    Home Page
+    {% endblock %}
+
+    {% block content %}
+    <h1>Welcome to the Cafe App</h1>
+
+    <form action="/search" method="get">
+    <input type="text" name="loc" placeholder="Enter a location to search" required>
+    <button type="submit">Search</button>
+    </form>
+
+    <!-- Buttons with no functionality -->
+    <button id="get-all-cafes" onclick="window.location.href='/all';">Get All Cafes</button>
+    <button id="get-random-cafe" onclick="window.location.href='/random';">Get Random Cafe</button>
+    <button id="add-cafe" onclick="window.location.href='/add';">Add Cafe</button>
+
+    {% endblock %}
+</body>
+</html>

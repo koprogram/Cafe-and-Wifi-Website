@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}
+    Add a New Cafe
+    {% endblock %}
+
+    {% block content %}
+    <h1>Search Results</h1>
+    <div id="search-results">
+        {% if cafes %}
+            {% for cafe in cafes %}
+                <div class="cafe-item">
+                    <h2>{{ cafe.name }}</h2>
+                    <p>Location: {{ cafe.location }}</p>
+                    <!-- Add more details as you see fit -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No cafes found at the specified location.</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+    {% endblock %}
+</body>
+</html>

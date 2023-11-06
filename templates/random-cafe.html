@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cafe</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body id="random-page-body">
+    {% extends "base.html" %}
+    {% block title %}
+    Random Cafe
+    {% endblock %}
+
+    {% block content %}
+    <h1>Random Cafe</h1>
+    <div id="random-cafe">
+        {% if cafe %}
+        <div class="card">
+            <h2>{{ cafe.name }}</h2>
+            <img src="{{ cafe.img_url }}" alt="{{ cafe.name }}" class="card-image">
+            <p>Location: {{ cafe.location }}</p>
+            <p>Seats: {{ cafe.seats }}</p>
+            <p>Has Toilet: {{ 'Yes' if cafe.has_toilet else 'No' }}</p>
+            <p>Has WiFi: {{ 'Yes' if cafe.has_wifi else 'No' }}</p>
+            <p>Has Sockets: {{ 'Yes' if cafe.has_sockets else 'No' }}</p>
+            <p>Can Take Calls: {{ 'Yes' if cafe.can_take_calls else 'No' }}</p>
+            <p>Coffee Price: {{ cafe.coffee_price }}</p>
+            <div class="card-actions">
+                    <form action="{{ url_for('update_cafe_price', cafe_id=cafe.id) }}" method="post">
+                    <label for="price-{{ cafe.id }}">Update Price:</label>
+                    <input type="text" id="price-{{ cafe.id }}" name="new_price" required>
+                    <button type="submit">Submit</button>
+                </form>
+                    <form action="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this cafe?');">
+                    <input type="hidden" name="api_key" value="TopSecretAPIKey"> <!-- Replace with your method of securing the API Key -->
+                    <button type="submit" class="card-link">Delete Cafe</button>
+                    </form>
+                </div>
+        </div>
+        {% else %}
+        <p>No cafe found.</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('home') }}" class="button">Back to home</a>
+    {% endblock %}
+</body>
+</html>

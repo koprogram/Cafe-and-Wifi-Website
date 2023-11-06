@@ -1,0 +1,178 @@
+/* Global styles */
+body, html {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: top;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Button and input styles */
+button,
+input[type=submit],
+.button {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+button:hover,
+input[type=submit]:hover,
+.button:hover {
+    background-color: #0b5ed7;
+}
+
+button:active,
+input[type=submit]:active,
+.button:active {
+    background-color: #0a58ca;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+input[type=submit] {
+    background-color: #28a745;
+}
+
+input[type=submit]:hover {
+    background-color: #218838;
+}
+
+input[type=submit]:active {
+    background-color: #1e7e34;
+}
+
+input[type=text],
+input[type=checkbox] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    width: 95%;
+}
+
+/* Card and form styles */
+.card,
+#cafe-list,
+#random-cafe,
+#add-cafe-form,
+form {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-container,
+.cafe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: calc(33% - 20px);
+    max-width: 300px;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title,
+.card-text {
+    margin: 5px 0;
+    color: #333;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.card-link,
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.card-actions {
+    margin-top: 15px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .card-container {
+        justify-content: center;
+    }
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+}
+
+button.card-link {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#homepage-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#random-page-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
